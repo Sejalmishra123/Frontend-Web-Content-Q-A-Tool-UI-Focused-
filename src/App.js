@@ -7,14 +7,20 @@ function App() {
   const [answer, setAnswer] = useState("");
 
   const handleIngest = async () => {
-    await axios.post("http://127.0.0.1:5000/ingest", { urls: urls.split(",") });
+    await axios.post(
+      "https://backend-web-content-q-a-tool.onrender.com/ingest",
+      { urls: urls.split(",") }
+    );
     alert("Content Ingested!");
   };
 
   const handleAsk = async () => {
-    const response = await axios.post("http://127.0.0.1:5000/ask", {
-      question,
-    });
+    const response = await axios.post(
+      "https://backend-web-content-q-a-tool.onrender.com/ask",
+      {
+        question,
+      }
+    );
     setAnswer(response.data.answer);
   };
 
